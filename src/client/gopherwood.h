@@ -77,6 +77,11 @@ typedef struct GWContextConfig {
     int32_t numPreDefinedConcurrency;
 } GWContextConfig;
 
+typedef struct GWFileInfo
+{
+	int64_t fileSize;
+
+}GWFileInfo;
 /**
  * gwCreateContext - Connect to a gopherwood file system.
  *
@@ -178,6 +183,27 @@ int gwDeleteFile(gopherwoodFS fs, char *filePath);
  * @return  Returns 0 on success, -1 on error.
  */
 int gwDestroyContext(gopherwoodFS fs);
+
+/**
+ * gwCancelFile - Cancel any in progressing file operations, after cancel
+ *                 the file can not do any operations except
+ *                 destroy context.
+ *
+ * @param   fs      The configured filesystem handle.
+ * @param   file    The file handle.
+ * @return  Returns 0 on success, -1 on error.
+ */
+int gwCancelFile(gopherwoodFS fs, gwFile file);
+
+/**
+ * gwStatFile - return file stat info
+ *
+ * @param   fs      The configured filesystem handle.
+ * @param   file    The file handle.
+ * @param fi[in/out] content the file information
+ * @return  Returns 0 on success, -1 on error.
+ */
+int gwStatFile(gopherwoodFS fs, gwFile file, GWFileInfo* fi);
 
 #ifdef __cplusplus
 }
