@@ -22,6 +22,8 @@
 #ifndef _GOPHERWOOD_CORE_FILE_H_
 #define _GOPHERWOOD_CORE_FILE_H_
 
+#include <openssl/sha.h>
+
 #include "platform.h"
 
 #include "core/ActiveStatus.h"
@@ -45,7 +47,7 @@ public:
 
     void flush();
 
-    void seek(int64_t pos, int mode);
+    int seek(int64_t pos, int mode);
 
     void close();
 
@@ -53,11 +55,14 @@ public:
 
     FileId getFileId();
 
+    int64_t getFileSize() {return mStatus->getEof();}
+
     ~File();
 
 private:
     FileId id;
     std::string name;
+    std::string nameDigest;
     int mFlags;
     int localFD;
     shared_ptr<ActiveStatus> mStatus;
