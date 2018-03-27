@@ -215,7 +215,7 @@ tSize gwRead(gopherwoodFS fs, gwFile file, void *buffer, tSize length) {
     return -1;
 }
 
-int gwSeek(gopherwoodFS fs, gwFile file, tOffset desiredPos, int mode) {
+int64_t gwSeek(gopherwoodFS fs, gwFile file, tOffset desiredPos, int mode) {
     LOG(Gopherwood::Internal::INFO, "------------------gwSeek start------------------");
     try {
         return file->getFile().seek(desiredPos, mode);

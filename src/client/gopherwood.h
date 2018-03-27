@@ -152,7 +152,7 @@ gwFile gwOpenFile(gopherwoodFS fs, const char *fileName, int flags);
  * @param desiredPos Offset into the file to seek into.
  * @return Returns 0 on success, -1 on error.
  */
-int gwSeek(gopherwoodFS fs, gwFile file, tOffset desiredPos, int mode);
+int64_t gwSeek(gopherwoodFS fs, gwFile file, tOffset desiredPos, int mode);
 
 /**
  * gwCloseFile - Close an open file.

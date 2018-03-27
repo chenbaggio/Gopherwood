@@ -60,7 +60,7 @@ void File::flush() {
     mStatus->flush();
 }
 
-int File::seek(int64_t pos, int mode) {
+int64_t File::seek(int64_t pos, int mode) {
     int64_t eof = mStatus->getEof();
     int64_t targetPos = -1;
 
