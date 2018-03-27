@@ -22,8 +22,6 @@
 #ifndef _GOPHERWOOD_CORE_FILE_H_
 #define _GOPHERWOOD_CORE_FILE_H_
 
-#include <openssl/sha.h>
-
 #include "platform.h"
 
 #include "core/ActiveStatus.h"
@@ -47,7 +45,7 @@ public:
 
     void flush();
 
-    int seek(int64_t pos, int mode);
+    int64_t seek(int64_t pos, int mode);
 
     void close();
 
