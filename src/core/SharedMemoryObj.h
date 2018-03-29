@@ -66,7 +66,7 @@ typedef struct ShareMemHeader {
         numUsedBuckets = 0;
         numEvictingBuckets = 0;
     };
-} ShareMemHeader;
+}__attribute__((packed)) ShareMemHeader;
 
 /* Bit usages in flags field (low to high)
  * bit 0~1:     Bucket type 0/1/2
